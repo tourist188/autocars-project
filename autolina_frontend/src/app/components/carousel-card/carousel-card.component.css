@@ -1,0 +1,187 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 890px;
+  height: 225px;
+  border: 1px solid #26a9b5;
+  border-radius: 5px;
+  position: relative; /* Add this to make it a positioning context for absolute elements */
+  margin-top: 30px;
+}
+
+.price {
+  text-align: center;
+  line-height: 40px;
+  font-size: 24px;
+  font-family: Azeret Mono, monospace;
+  margin-top: 20px;
+  width: 180.48px;
+  height: 40px;
+  background-color: #26a9b5;
+  color: white; /* Set the text color to white */
+  border-radius: 20px 0 0 20px;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  position: relative;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  position: relative;
+}
+
+.carousel-image {
+  width: 300px;
+  height: 225px;
+  background: none;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: #d8d6d6;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.carousel-bullets {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.carousel-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.carousel-bullet.active {
+  background-color: #fff;
+}
+
+.carousel-btn-left {
+  left: 0;
+}
+
+.carousel-btn-right {
+  right: 0;
+}
+
+.carousel-btn-image {
+  width: 30px;
+  height: 30px;
+  opacity: 0.5;
+  transition: all 0.3s ease-in-out;
+}
+
+.carousel-btn-image:hover {
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  opacity: 1;
+}
+
+.carousel-titles {
+  margin-bottom: 20px;
+}
+
+.carousel-rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.carousel-box {
+  width: 50px;
+  height: 50px;
+  background-color: #ccc;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel-box {
+  width: 50px;
+  height: 50px;
+  background-color: #ebf4f9;
+  font-size: 15px;
+  border-radius: 13px;
+  border-color: #26a9b5;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small-box {
+  width: 67px;
+  height: 26px;
+}
+
+.medium-box {
+  width: 95px;
+  height: 26px;
+}
+.large-box {
+  width: 150px;
+  height: 25px;
+}
+
+.title-1 {
+  margin-top: 11px;
+  margin-bottom: 2px;
+  margin-left: 5px;
+  font-weight: bold;
+}
+.title-2 {
+  margin-left: 5px;
+  margin-top: 1px;
+  margin-bottom: 12px;
+  font-weight: normal;
+}
+
+.address-location-container {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  margin-top: 20px; /* Adjust the margin as needed */
+  font-size: 16px;
+  color: #666666;
+}
+
+.location-img {
+  width: 21px;
+  height: 28px;
+  margin-right: 10px; /* Add spacing between the image and address */
+}

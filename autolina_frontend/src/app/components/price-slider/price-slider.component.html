@@ -1,0 +1,54 @@
+<div class="wrapper">
+  <header>
+    <p>Price</p>
+  </header>
+  <div class="range-slider-container">
+    <div class="slider">
+      <div
+        class="progress"
+        [style.left]="rangeLeft"
+        [style.right]="rangeRight"
+      ></div>
+    </div>
+
+    <div class="range-input">
+      <!--thumb 1-->
+      <input
+        type="range"
+        class="range-min"
+        min="1000"
+        max="150000"
+        value="1000"
+        step="1000"
+        [(ngModel)]="minRange"
+        (input)="updateNumbers()"
+        (change)="sendRequest()"
+      />
+      <!--thumb 2-->
+      <input
+        type="range"
+        class="range-max"
+        min="1000"
+        max="150000"
+        value="150000"
+        step="1000"
+        [(ngModel)]="maxRange"
+        (input)="updateNumbers()"
+        (change)="sendRequest()"
+      />
+    </div>
+  </div>
+  <!-- Range Slider container End -->
+
+  <div class="price-input">
+    <!-- Container for min-max prices as Numbers -->
+    <!-- Number 1 (displayed as label) -->
+    <div class="field">
+      <span class="input-min">{{ minPrice }}</span>
+    </div>
+    <!-- Number 2 (displayed as label) -->
+    <div class="field">
+      <span class="input-max">{{ maxPrice }}</span>
+    </div>
+  </div>
+</div>

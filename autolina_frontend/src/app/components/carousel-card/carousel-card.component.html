@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="carousel-container">
+    <div
+      class="carousel-item carousel-track"
+      [style.transform]="'translateX(' + currentIndex * -100 + '%)'"
+    >
+      <ng-container
+        *ngIf="imageUrls && imageUrls.length > 0; else defaultImageBlock"
+      >
+        <div *ngFor="let url of imageUrls; let i = index">
+          <img [src]="url" class="carousel-image" />
+        </div>
+      </ng-container>
+      <ng-template #defaultImageBlock>
+        <div>
+          <img [src]="defaultImageUrl" class="carousel-image" />
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Bullet Points -->
+    <div class="carousel-bullets">
+      <span
+        class="carousel-bullet"
+        *ngFor="let url of imageUrls; let i = index"
+        [ngClass]="{ active: i === currentIndex }"
+        (click)="updateCarousel(i)"
+      ></span>
+    </div>
+    <!-- Left and Right Buttons -->
+    <button class="carousel-btn carousel-btn-left" (click)="updateCarousel(-1)">
+      <img
+        src="..\..\assets\media\leftbtn.svg"
+        alt="Left Button"
+        class="carousel-btn-image"
+      />
+    </button>
+    <button class="carousel-btn carousel-btn-right" (click)="updateCarousel(1)">
+      <img
+        src="..\..\assets\media\rightbtn.svg"
+        alt="Right Button"
+        class="carousel-btn-image"
+      />
+    </button>
+  </div>
+
+  <!-- New Content -->
+  <div class="carousel-content">
+    <div class="carousel-titles">
+      <h2 class="title-1">{{ car.make }}</h2>
+      <h2 class="title-2">{{ car.model }} {{ car.submodel }}</h2>
+    </div>
+
+    <div class="carousel-rows">
+      <div class="carousel-row">
+        <div class="carousel-box large-box">{{ car.year }}</div>
+        <div class="carousel-box medium-box">{{ car.km }}</div>
+        <div class="carousel-box small-box">{{ car.horsepower }}</div>
+      </div>
+      <div class="carousel-row">
+        <div class="carousel-box large-box">{{ car.transmission }}</div>
+        <div class="carousel-box medium-box">{{ car.fuel_type }}</div>
+        <div class="carousel-box small-box">{{ car.color }}</div>
+      </div>
+    </div>
+    <div class="address-location-container">
+      <img
+        src="..\..\assets\media\location.svg"
+        alt="location"
+        class="location-img"
+      />
+      <div class="address">8127 Forch/CH</div>
+    </div>
+  </div>
+
+  <!-- Price -->
+  <div class="price">CHF {{ car.price }}</div>
+</div>

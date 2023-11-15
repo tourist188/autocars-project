@@ -1,0 +1,146 @@
+<div class="container">
+  <!-- SORTING -->
+  <button (click)="goBackToTabbedComponent()" class="back-btn">
+    Search Engine
+  </button>
+  <button    (click)="toggleMenu()" class="btn">Sortieren</button>
+
+  <nav class="dropdown-body">
+    <ul [ngClass]="getRotateClass()" #menu (click)="handleMenuClick($event)">
+      <li
+        class="item"
+        (click)="updateSortCriteria('makemodel', 'asc')"
+        [class.selected]="
+          currentSort === 'makemodel' && currentSortDirection === 'asc'
+        "
+      >
+        Model (A-Z)
+      </li>
+      <li
+        class="item"
+        (click)="updateSortCriteria('makemodel', 'desc')"
+        [class.selected]="
+          currentSort === 'makemodel' && currentSortDirection === 'desc'
+        "
+      >
+        Model (Z-A)
+      </li>
+      <li
+        class="item"
+        (click)="updateSortCriteria('year', 'asc')"
+        [class.selected]="
+          currentSort === 'year' && currentSortDirection === 'asc'
+        "
+      >
+        Model Year (Oldest First)
+      </li>
+      <li
+        class="item"
+        (click)="updateSortCriteria('year', 'desc')"
+        [class.selected]="
+          currentSort === 'year' && currentSortDirection === 'desc'
+        "
+      >
+        Model Year (Newest First)
+      </li>
+      <li
+        class="item"
+        (click)="updateSortCriteria('price', 'asc')"
+        [class.selected]="
+          currentSort === 'price' && currentSortDirection === 'asc'
+        "
+      >
+        Price (Lowest First)
+      </li>
+      <li
+        class="item"
+        (click)="updateSortCriteria('price', 'desc')"
+        [class.selected]="
+          currentSort === 'price' && currentSortDirection === 'desc'
+        "
+      >
+        Price (Highest First)
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<!-- LOADING SCREEN -->
+<div class="card">
+  <div class="loading-window" *ngIf="isLoading">
+    <!-- This will be displayed when isLoading is true -->
+    <div class="car" *ngIf="!listContainer">
+      <div class="strike"></div>
+      <div class="strike strike2"></div>
+      <div class="strike strike3"></div>
+      <div class="strike strike4"></div>
+      <div class="strike strike5"></div>
+      <div class="car-detail spoiler"></div>
+      <div class="car-detail back"></div>
+      <div class="car-detail center"></div>
+      <div class="car-detail center1"></div>
+      <div class="car-detail front"></div>
+      <div class="car-detail wheel"></div>
+      <div class="car-detail wheel wheel2"></div>
+    </div>
+  </div>
+
+  <!-- LIST OF CARS -->
+
+  <div *ngIf="!isLoading" #listContainer>
+    <app-carousel-card *ngFor="let car of cars" [car]="car"></app-carousel-card>
+  </div>
+
+  <br />
+  <!-- Pagination controls -->
+  <div *ngIf="!isLoading" style="display: inline-block" class="pagination">
+    <!-- previous PAGE button -->
+    <button
+      style="display: inline-block; margin-right: 10px"
+      class="page-number prev-btn"
+      (click)="prevPage()"
+      *ngIf="currentPage !== 1"
+    >
+      <img
+        class="prev-img"
+        src="..\..\assets\media\next.svg"
+        alt="Search Icon"
+      />
+    </button>
+
+    <!-- numbered pages -->
+    <ol style="display: inline-block" class="numbered-buttons">
+      <li
+        style="display: inline-block"
+        *ngFor="let page of pagesArray; let i = index"
+      >
+      <button
+      class="page-number"
+      (click)="goToPage(page)"
+      [class.page-number-selected]="currentPage === page"
+      [class.shadow-pop-hover]="isHoveredArray[i] && currentPage !== page && lastClickedPage !== page"
+      [disabled]="currentPage === page"
+      (mouseenter)="onPaginationButtonHover(true, i)"
+      (mouseleave)="onPaginationButtonHover(false, i)"
+    >
+      {{ page }}
+    </button>
+    
+      </li>
+    </ol>
+    <!-- Next PAGE button  -->
+    <button
+      style="display: inline-block"
+      class="page-number next-btn"
+      (click)="nextPage()"
+      *ngIf="currentPage !== totalPages"
+    >
+      <img
+        class="next-img"
+        src="..\..\assets\media\next.svg"
+        alt="Search Icon"
+      />
+    </button>
+  </div>
+  <!-- pagination controls end -->
+</div>

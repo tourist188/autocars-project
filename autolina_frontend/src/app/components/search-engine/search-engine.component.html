@@ -1,0 +1,65 @@
+<mat-card dynamicHeight dynamicWidth class="card">
+  <mat-tab-group dynamicHeight dynamicWidth [(selectedIndex)]="currentTab">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <div class="tab-header">
+          <img class="search-img" src="..\..\assets\media\search.svg" />
+          <span style="color: black">Suche</span>
+        </div>
+      </ng-template>
+      <ng-template matTabContent>
+        <!--Tab 1 Content -->
+        <div class="tab-content">
+          <app-make-search
+            (selectedMakeChange)="onSelectedMakeChange($event)"
+          ></app-make-search>
+
+          <br />
+
+          <app-model-search
+            (selectedModelChange)="onSelectedModelChange($event)"
+            [makeIsSelected]="!selectedMake"
+          ></app-model-search>
+
+          <br />
+          <app-price-slider
+            (priceRangeChange)="onPriceRangeChange($event)"
+          ></app-price-slider>
+          <br />
+          <!-- GET CARS BUTTON -->
+          <a class="hits-btn" (click)="fetchCars()">
+            <span *ngIf="showLoadingAnimation == false"
+              >{{ hits }} Treffer</span
+            >
+
+            <div *ngIf="showLoadingAnimation == true" class="load-icon center">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </a>
+        </div>
+      </ng-template>
+    </mat-tab>
+    <!---First  TAB END-->
+    <mat-tab class="tab2">
+      <ng-template mat-tab-label>
+        <div class="tab-header">
+          <img class="dealer-img" src="..\..\assets\media\dealer.svg" />
+          <span>Verkaufen</span>
+        </div>
+      </ng-template>
+      <div class="tab-content">
+        Advertise Vehicles and Receive offers
+        <div class="list-container">
+          <ul>
+            <li *ngFor="let item of listItems">
+              <mat-icon>check</mat-icon>
+              <span style="margin-left: 20px">{{ item }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

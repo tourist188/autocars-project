@@ -1,0 +1,34 @@
+<div class="dropdown-container">
+    <div class="input-container">
+      <input
+        type="text"
+        id="dropdown-input"
+        [(ngModel)]="selectedItem"
+        (click)="toggleDropdown()"
+        (focus)="clearSelectedItem()"
+      autocomplete="off"
+        [disabled]="isInputDisabled"
+      />
+      <!-- Add the "X" button here inside the input-container div -->
+      <!-- <span class="clear-button" (click)="clearSelectedItem()">X</span> -->
+    </div>
+    <div class="dropdown-scroll-container">
+      <ul class="dropdown-menu" [ngClass]="{ open: isDropdownOpen }">
+        <div class="page">
+          <div class="wrapper">
+            <div class="content">
+              <li
+                class="dropdown-item"
+                *ngFor="let item of filteredItems; let i = index"
+                (click)="selectItem(item, i)"
+                [class.selected]="i === selectedItemIndex"
+              >
+                {{ item }}
+              </li>
+            </div>
+          </div>
+        </div>  
+      </ul>
+    </div>
+  </div>
+  

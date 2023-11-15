@@ -1,0 +1,10 @@
+<app-dropdown-search
+  [selectedItem]="selectedItem"
+  [isInputDisabled]="isInputDisabled"
+  [isDropdownOpen]="isDropdownOpen"
+  [filteredItems]="filteredItems"
+  [selectedItemIndex]="selectedItemIndex"
+  (toggleDropdownEvent)="toggleDropdown()"
+  (clearSelectedItemEvent)="clearSelectedItem()"
+  (selectItemEvent)="selectItem($event.item, $event.index)"
+></app-dropdown-search>
